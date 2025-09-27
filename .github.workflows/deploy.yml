@@ -1,0 +1,28 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy on remote server
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.REMOTE_KEY }}
+          script: |
+            set -e
+            cd ~/taro-be/
+            git pull origin master
+            export DB_USERNAME="${{ secrets.DB_USERNAME }}"
+            export DB_PASSWORD="${{ secrets.DB_PASSWORD }}"
+            export OPENAI_API_KEY="${{ secrets.OPENAI_API_KEY }}"
+            
+            docker compose down
+            docker compose up -d --build

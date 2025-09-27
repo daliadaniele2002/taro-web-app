@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:16
+    container_name: taro-web-app-postgres
+    environment:
+      POSTGRES_DB: taro
+      POSTGRES_USER: taro
+      POSTGRES_PASSWORD: taro
+    ports:
+      - "5432:5432"
+    volumes:
+      - taro_web_app_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U taro -d taro"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  taro_web_app_pg_data:

@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: taro-be
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      PATH_PREFIX:
+    networks:
+      - taro-be-network
+
+  db:
+    image: postgres:16
+    container_name: taro-db
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: taro
+    ports:
+      - "5432:5432"
+    volumes:
+      - taro-db-data:/var/lib/postgresql/data
+    networks:
+      - taro-be-network
+
+volumes:
+  taro-db-data:
+
+networks:
+  taro-be-network:
+    external: true
