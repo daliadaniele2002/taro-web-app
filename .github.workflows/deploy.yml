@@ -18,7 +18,7 @@ jobs:
           key: ${{ secrets.REMOTE_KEY }}
           script: |
             set -e
-            cd ~/taro-be/
+            cd ~/taro-be/taro-web-app
             git pull origin master
             export DB_USERNAME="${{ secrets.DB_USERNAME }}"
             export DB_PASSWORD="${{ secrets.DB_PASSWORD }}"
