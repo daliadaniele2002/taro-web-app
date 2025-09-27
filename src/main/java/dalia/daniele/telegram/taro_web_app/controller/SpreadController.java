@@ -8,6 +8,7 @@ import dalia.daniele.telegram.taro_web_app.domain.spread.Spread;
 import dalia.daniele.telegram.taro_web_app.domain.spread.dto.SpreadRequest;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -40,7 +41,7 @@ public class SpreadController {
         return command.execute(spreadId);
     }
 
-//    @GetMapping(path = "/{spreadId}/interpret/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping(path = "/{spreadId}/interpret/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public Flux<String> interpretStream(@PathVariable UUID spreadId) {
         var command = beanFactory.getBean(InterpretSpreadStreamCommand.class);
