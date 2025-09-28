@@ -14,6 +14,7 @@ services:
       DB_URL: taro-db:5432/taro
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
+      OPENAI_MOCKED: true
       OPENAI_API_KEY: ${OPENAI_API_KEY}
       PATH_PREFIX: plaseholder # TODO change
     networks:
