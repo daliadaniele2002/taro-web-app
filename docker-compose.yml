@@ -16,7 +16,7 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       OPENAI_MOCKED: true
       OPENAI_API_KEY: ${OPENAI_API_KEY}
-      PATH_PREFIX: plaseholder # TODO change
+      PATH_PREFIX: /cards/
     networks:
       - taro-be-network
 
