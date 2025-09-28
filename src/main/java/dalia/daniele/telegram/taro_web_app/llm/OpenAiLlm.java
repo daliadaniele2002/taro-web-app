@@ -3,6 +3,7 @@ package dalia.daniele.telegram.taro_web_app.llm;
 import dalia.daniele.telegram.taro_web_app.domain.AiRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
+@ConditionalOnProperty(name = "openai.mocked", havingValue = "false")
 public class OpenAiLlm implements LlmClient<AiRequest> {
     private static final Logger logger = LoggerFactory.getLogger(OpenAiLlm.class);
 
