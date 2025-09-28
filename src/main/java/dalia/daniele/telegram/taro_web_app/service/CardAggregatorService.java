@@ -30,7 +30,7 @@ public class CardAggregatorService {
     }
 
     private Card entityToCard(CardEntity entity) {
-        var cardPicture = new OnServerPicture(pathPrefix + entity.cardId());
+        var cardPicture = new OnServerPicture(pathPrefix + entity.fileName());
         return new Card(entity.title(), cardPicture);
     }
 }

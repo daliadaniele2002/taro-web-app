@@ -9,6 +9,8 @@ public record CardEntity(
         @Id
         @Column("card_id")
         Long cardId,
-        String title
+        String title,
+        @Column("file_name")
+        String fileName
 ) {
 }
