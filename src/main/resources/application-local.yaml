@@ -6,7 +6,3 @@ OPENAI_MOCKED: true
 OPENAI_API_KEY: ${OPENAI_API_KEY}
 
 PATH_PREFIX: /cards/
-
-logging:
-  level:
-    dalia.daniele.telegram.taro_web_app.llm.OpenAiLlm: DEBUG

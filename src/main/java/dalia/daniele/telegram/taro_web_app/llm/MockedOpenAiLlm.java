@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 import java.time.Duration;
 
 @Component
-@ConditionalOnProperty(name = "openai.mocked", havingValue = "true")
+@ConditionalOnProperty(name = "ai.openai.mocked", havingValue = "true")
 public class MockedOpenAiLlm implements LlmClient<AiRequest> {
 
     @Override

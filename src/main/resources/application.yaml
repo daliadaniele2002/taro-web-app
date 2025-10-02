@@ -4,6 +4,14 @@ spring:
   main:
     web-application-type: reactive
 
+  ai:
+    openai:
+      mocked: ${OPENAI_MOCKED:false}
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-3.5-turbo
+          temperature: 0.7
 
   r2dbc:
     url: r2dbc:postgresql://${DB_URL}
@@ -19,10 +27,6 @@ spring:
 
 server:
   port: ${SERVER_PORT:8080}
-
-openai:
-  mocked: ${OPENAI_MOCKED:false}
-  apiKey: ${OPENAI_API_KEY}
 
 taro:
   deck-size: ${DECK_SIZE:78}
